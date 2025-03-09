@@ -1,0 +1,10 @@
+SELECT 
+    customerNumber, 
+    contactLastName, 
+    contactFirstName
+FROM customers
+WHERE customerNumber IN (
+    SELECT customerNumber 
+    FROM orders 
+    WHERE orderDate = '2003-01-31'
+);

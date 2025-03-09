@@ -1,0 +1,16 @@
+SELECT DISTINCT 
+    e.employeeNumber, 
+    e.firstName, 
+    e.lastName, 
+    o.city, 
+    e.officeCode
+FROM employees e
+JOIN offices o ON e.officeCode = o.officeCode
+JOIN customers c ON e.employeeNumber = c.salesRepEmployeeNumber
+JOIN orders od ON c.customerNumber = od.customerNumber
+WHERE c.customerNumber IN (
+    SELECT customerNumber 
+    FROM orders 
+    GROUP BY customerNumber 
+    HAVING COUNT(DISTINCT customerNumber) < 20
+);
