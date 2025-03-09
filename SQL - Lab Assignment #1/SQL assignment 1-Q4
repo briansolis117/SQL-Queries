@@ -1,0 +1,7 @@
+SELECT c.customerName, SUM(p.priceEach * p.quantityOrdered) AS total_spent
+FROM customers c
+JOIN orders o ON c.customerNumber = o.customerNumber
+JOIN orderdetails p ON o.orderNumber = p.orderNumber
+GROUP BY c.customerName
+ORDER BY total_spent DESC;
+

@@ -1,0 +1,5 @@
+SELECT contactFirstName, contactLastName, phone, addressLine1, creditLimit
+FROM customers
+ORDER BY creditLimit DESC
+LIMIT 10;
+
